@@ -30,12 +30,9 @@ terraform {
 }
 
 provider "azurerm" {
-  features {
-    resource_group {
-      prevent_deletion_if_contains_resources = false
-    }
-  }
+  features {}
 }
+
 provider "kubernetes" {
   host                   = one(azurerm_kubernetes_cluster.akstf.kube_admin_config).host
   client_certificate     = base64decode(one(azurerm_kubernetes_cluster.akstf.kube_admin_config).client_certificate)
